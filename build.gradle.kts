@@ -13,6 +13,10 @@ repositories {
 
 dependencies {
     testImplementation(kotlin("test"))
+
+    implementation("io.appium:java-client:8.2.0")
+    implementation("junit:junit:4.13.2")
+    implementation("org.seleniumhq.selenium:selenium-java:4.6.0")
 }
 
 tasks.test {
