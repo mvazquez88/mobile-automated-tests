@@ -1,8 +1,8 @@
 import org.automation.screens.LandingScreen
-import org.junit.Test
+import org.junit.jupiter.api.Test
 import org.openqa.selenium.remote.DesiredCapabilities
 
-class AboutThisAppTests : TestBase() {
+class AboutThisAppTest : TestBase() {
     override var caps: DesiredCapabilities? = ProjectCapabilities.androidCapabilities()
 
     @Test
