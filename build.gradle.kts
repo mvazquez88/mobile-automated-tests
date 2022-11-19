@@ -28,6 +28,7 @@ tasks.test {
     useJUnitPlatform()
 
     systemProperty("platform", System.getProperty("platform"))
+    systemProperty("webDriverUrl", System.getProperty("webDriverUrl"))
 }
 
 tasks.withType<KotlinCompile> {
