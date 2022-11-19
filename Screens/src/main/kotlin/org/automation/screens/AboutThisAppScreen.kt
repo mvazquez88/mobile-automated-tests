@@ -1,28 +1,15 @@
 package org.automation.screens
 
 import io.appium.java_client.AppiumDriver
-import org.openqa.selenium.By
-import org.openqa.selenium.support.ui.WebDriverWait
-import java.time.Duration
+import org.automation.locators.AboutThisAppLocatorsAndroid
+import org.automation.locators.AboutThisAppScreenLocators
 
-class AboutThisAppScreen(private val driver: AppiumDriver) {
+class AboutThisAppScreen(driver: AppiumDriver): Screen(driver) {
 
-    private val locators = AboutThisAppLocatorsAndroid()
-    private val wait = WebDriverWait(driver, Duration.ofSeconds(10))
+    private val locators: AboutThisAppScreenLocators = AboutThisAppLocatorsAndroid()
 
     fun getVersionText(): String {
-        wait.until { driver.findElement(locators.appVersionLabel).isDisplayed }
+        defaultWait.until { driver.findElement(locators.appVersionLabel).isDisplayed }
         return driver.findElement(locators.appVersionLabel)?.text.orEmpty()
     }
-}
-
-interface AboutThisAppScreenLocators {
-    val appVersionLabel: By
-}
-
-class AboutThisAppLocatorsAndroid : AboutThisAppScreenLocators {
-    override val appVersionLabel: By = By.id("appVersionTextView")
-}
-class AboutThisAppLocatorsiOS : AboutThisAppScreenLocators {
-    override val appVersionLabel: By = By.name("appVersion")
 }
