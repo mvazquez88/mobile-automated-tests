@@ -7,17 +7,17 @@ import org.openqa.selenium.remote.DesiredCapabilities
 import java.net.URL
 
 open class TestBase {
-    protected var driver: AppiumDriver? = null
+    protected lateinit var driver: AppiumDriver
     protected open var caps: DesiredCapabilities? = null
     private val webDriverURL: URL = URL("http://localhost:4723/wd/hub")
 
      @Before
     fun setUp() {
-        this.driver = AndroidDriver(webDriverURL, caps)
+        driver = AndroidDriver(webDriverURL, caps)
     }
 
     @After
     fun tearDown() {
-        this.driver?.quit() ?: throw Exception("Driver instance was unable to quit.")
+        driver.quit()
     }
 }

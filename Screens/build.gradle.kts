@@ -14,17 +14,15 @@ repositories {
 dependencies {
     testImplementation(kotlin("test"))
 
-    implementation(project(":Screens"))
-
     implementation("io.appium:java-client:8.2.0")
     implementation("junit:junit:4.13.2")
     implementation("org.seleniumhq.selenium:selenium-java:4.6.0")
 }
 
-tasks.test {
+tasks.getByName<Test>("test") {
     useJUnitPlatform()
 }
-
-tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = "1.8"
+val compileKotlin: KotlinCompile by tasks
+compileKotlin.kotlinOptions {
+    jvmTarget = "1.8"
 }
