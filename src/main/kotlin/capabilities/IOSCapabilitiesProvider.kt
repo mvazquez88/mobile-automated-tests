@@ -15,9 +15,6 @@ class IOSCapabilitiesProvider : CapabilitiesProvider() {
     override fun getDriver() = IOSDriver(webDriverURL, getDefault())
 
     override fun getDefault() = super.getDefault().apply {
-        setCapability(MobileCapabilityType.PLATFORM_NAME, Platform.IOS)
-        setCapability(MobileCapabilityType.AUTOMATION_NAME, AutomationName.IOS_XCUI_TEST)
-
         setCapability(IOSMobileCapabilityType.BUNDLE_ID, iOSLibertyMutualBundleId)
 
         setCapability(MobileCapabilityType.DEVICE_NAME, myIphoneName)

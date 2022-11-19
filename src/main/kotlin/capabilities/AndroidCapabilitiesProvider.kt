@@ -13,9 +13,6 @@ class AndroidCapabilitiesProvider : CapabilitiesProvider() {
     override fun getDriver() = AndroidDriver(webDriverURL, getDefault())
 
     override fun getDefault() = super.getDefault().apply {
-        setCapability(MobileCapabilityType.PLATFORM_NAME, Platform.ANDROID)
-        setCapability(MobileCapabilityType.AUTOMATION_NAME, AutomationName.ANDROID_UIAUTOMATOR2)
-
         setCapability(AndroidMobileCapabilityType.APP_PACKAGE, androidLibertyMutualPackage)
         setCapability(AndroidMobileCapabilityType.APP_ACTIVITY, androidLibertyMutualActivity)
     }

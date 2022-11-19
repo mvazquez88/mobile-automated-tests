@@ -1,7 +1,7 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "1.7.10"
+    kotlin("jvm") version "1.8.0-Beta"
 }
 
 group = "org.automation"
@@ -15,10 +15,6 @@ dependencies {
     // JUnit 5
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.9.0")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.9.0")
-
-    // Appium + Selenium
-    implementation("io.appium:java-client:8.2.0")
-    implementation("org.seleniumhq.selenium:selenium-java:4.6.0")
 
     // Submodules
     implementation(project(":Screens"))

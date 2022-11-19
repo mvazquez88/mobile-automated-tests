@@ -1,16 +1,17 @@
+import io.appium.java_client.remote.AutomationName
 import org.openqa.selenium.Platform as SeleniumPlatform
 
-enum class Platform(val seleniumPlatform: SeleniumPlatform) {
-    IOS(SeleniumPlatform.IOS),
-    Android(SeleniumPlatform.ANDROID);
+enum class Platform(val seleniumPlatform: SeleniumPlatform, val automation: String) {
+    IOS(SeleniumPlatform.IOS, AutomationName.IOS_XCUI_TEST),
+    Android(SeleniumPlatform.ANDROID, AutomationName.ANDROID_UIAUTOMATOR2);
 
     companion object {
-        fun parse(platform: SeleniumPlatform) = when (platform) {
-            SeleniumPlatform.IOS -> Platform.IOS
-            SeleniumPlatform.ANDROID -> Platform.Android
-            else -> throw IllegalArgumentException("Platform $platform not supported")
-        }
+        fun get(): Platform {
+            val platform = SeleniumPlatform.fromString(System.getProperty("platform"))
 
-        fun get() = parse(SeleniumPlatform.fromString(System.getProperty("platform")))
+            return values()
+                .firstOrNull { it.seleniumPlatform == platform }
+                ?: throw IllegalArgumentException("Platform $platform not supported")
+        }
     }
 }

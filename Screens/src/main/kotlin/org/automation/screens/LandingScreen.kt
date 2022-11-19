@@ -9,8 +9,10 @@ class LandingScreen(driver: AppiumDriver) : Screen(driver) {
     private val locators: LandingScreenLocators = LandingScreenLocatorsAndroid()
 
     fun tapAboutThisApp(): AboutThisAppScreen {
-        defaultWait.until { driver.findElement(locators.aboutThisAppButton).isDisplayed }
-        driver.findElement(locators.aboutThisAppButton)?.click()
+        with(locators.aboutThisAppButton) {
+            waitUntilDisplayed()
+            click()
+        }
         return AboutThisAppScreen(driver)
     }
 }

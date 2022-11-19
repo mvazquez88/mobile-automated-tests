@@ -1,7 +1,7 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "1.7.10"
+    kotlin("jvm") version "1.8.0-Beta"
 }
 
 group = "org.automation"
@@ -14,9 +14,8 @@ repositories {
 dependencies {
     testImplementation(kotlin("test"))
 
-    implementation("io.appium:java-client:8.2.0")
-    implementation("junit:junit:4.13.2")
-    implementation("org.seleniumhq.selenium:selenium-java:4.6.0")
+    api("io.appium:java-client:8.2.0")
+    api("org.seleniumhq.selenium:selenium-java:4.6.0")
 }
 
 tasks.getByName<Test>("test") {
